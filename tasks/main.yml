@@ -1,0 +1,6 @@
+---
+- name: "Preflight Checks"
+  include_tasks: 00-preflight-checks.yml
+
+- name: "First task"
+  include_tasks: 01-xxx.yml
