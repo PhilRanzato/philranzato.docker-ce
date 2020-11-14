@@ -1,7 +1,7 @@
 galaxy_info:
   author: Phil Ranzato
-  description: Description
-  issue_tracker_url: https://github.com/PhilRanzato/philranzato.ansible-role/issues
+  description: Install and manage Docker CE on multiple OS
+  issue_tracker_url: https://github.com/PhilRanzato/philranzato.docker-ce/issues
   license: MIT License
   min_ansible_version: 2.3
   platforms:

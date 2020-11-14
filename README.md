@@ -1,7 +1,7 @@
-philranzato.ansible-role
+philranzato.docker-ce
 =========
 
-A brief description of the role goes here.
+Install and manage Docker CE on multiple OS.
 
 Requirements
 ------------
@@ -23,10 +23,10 @@ Example Playbook
 ----------------
 
 ```yaml
-- name: "Play"
+- name: "Install docker-ce"
   hosts: servers
   roles:
-  - role: philranzato.ansible-role
+  - role: philranzato.docker-ce
 ```
 
 License
