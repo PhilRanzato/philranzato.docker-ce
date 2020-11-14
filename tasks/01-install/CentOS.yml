@@ -1,0 +1,35 @@
+---
+- name: "Uninstall old versions of Docker"
+  yum:
+    name: "{{ item }}"
+    state: absent
+  become: true
+  loop:
+  - docker-client
+  - docker-client-latest
+  - docker-common
+  - docker-latest
+  - docker-latest-logrotate
+  - docker-logrotate
+  - docker-engine
+
+- name: "Install yum-utils"
+  yum:
+    name: "yum-utils"
+    state: present
+  become: true
+
+- name: "Import docker-ce repository"
+  shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  become: true
+
+- name: "Install docker component"
+  yum:
+    name: "{{ item }}"
+    state: present
+  become: true
+  loop:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  notify: "Start docker - CentOS"

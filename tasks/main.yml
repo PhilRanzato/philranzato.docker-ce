@@ -1,6 +1,6 @@
 ---
 - name: "Preflight Checks"
-  include_tasks: 00-preflight-checks.yml
+  include_tasks: "00-preflight-checks/{{ ansible_distribution }}.yml"
 
-- name: "First task"
-  include_tasks: 01-xxx.yml
+- name: "Install Docker-ce"
+  include_tasks: "01-install/{{ ansible_distribution }}.yml"
