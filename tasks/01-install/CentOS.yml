@@ -32,4 +32,4 @@
   - docker-ce
   - docker-ce-cli
   - containerd.io
-  notify: "Start docker - CentOS"
+  notify: "Start docker - Systemd"
