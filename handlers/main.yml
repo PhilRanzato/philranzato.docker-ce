@@ -1,5 +1,5 @@
 ---
-- name: "Start docker - CentOS"
+- name: "Start docker - Systemd"
   systemd:
     name: docker
     enabled: true

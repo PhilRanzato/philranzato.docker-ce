@@ -1,0 +1,51 @@
+---
+- name: "Uninstall old versions of Docker"
+  dnf:
+    name: "{{ item }}"
+    state: absent
+  become: true
+  loop:
+  - docker
+  - docker-client
+  - docker-client-latest
+  - docker-common
+  - docker-latest
+  - docker-latest-logrotate
+  - docker-logrotate
+  - docker-selinux
+  - docker-engine-selinux
+  - docker-engine
+
+- name: "Install the dnf-plugins-core package"
+  dnf:
+    name: "dnf-plugins-core"
+    state: latest
+  become: true
+
+- name: "set up the stable repository"
+  shell: dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+  become: true
+
+- name: "Install docker component"
+  dnf:
+    name: "{{ item }}"
+    state: present
+  become: true
+  loop:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+
+- name: "Enable the backward compatibility for Cgroups"
+  shell: grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0"
+  when: ansible_distribution_version >= 31
+  become: true
+
+- name: "Reboot to take changes"
+  reboot:
+  become: true
+
+- name: "Wait for host to be ready"
+  wait_for:
+    port: 22
+  notify: "Start docker - Systemd"
