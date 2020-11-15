@@ -1,2 +1,7 @@
 ---
-# handlers file for philranzato.ansible-role
+- name: "Start docker - CentOS"
+  systemd:
+    name: docker
+    enabled: true
+    state: started
+  become: true
