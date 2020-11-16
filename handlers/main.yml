@@ -1,5 +1,5 @@
 ---
-- name: "Start docker - Systemd"
+- name: "Start docker"
   systemd:
     name: docker
     enabled: true
