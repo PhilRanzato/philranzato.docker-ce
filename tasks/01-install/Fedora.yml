@@ -63,4 +63,4 @@
 - name: "Wait for host to be ready"
   wait_for:
     port: 22
-  notify: "Start docker - Systemd"
+  notify: "Start docker"
