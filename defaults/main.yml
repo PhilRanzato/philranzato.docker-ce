@@ -1,2 +1,6 @@
 ---
-# defaults file for philranzato.ansible-role
+docker:
+  user: 
+    enabled: false
+    name: "test"
+

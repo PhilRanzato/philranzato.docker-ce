@@ -29,7 +29,7 @@
     shell: dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
     become: true
 
-  - name: "Install docker component"
+  - name: "Install docker components"
     dnf:
       name: "{{ item }}"
       state: present
@@ -42,7 +42,7 @@
 - name: "Install Docker for Fedora 33"
   when: ansible_distribution_version == '33'
   block:
-  - name: "Install docker component"
+  - name: "Install docker components"
     dnf:
       name: "{{ item }}"
       state: present
