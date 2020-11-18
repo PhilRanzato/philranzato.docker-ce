@@ -23,6 +23,12 @@
   shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
   become: true
 
+- name: "Update yum"
+  yum:
+    name: "*"
+    state: latest
+  become: true
+
 - name: "Install docker components"
   yum:
     name: "{{ item }}"
