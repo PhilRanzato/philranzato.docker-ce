@@ -6,11 +6,11 @@
   include_tasks: "01-install/{{ ansible_distribution }}.yml"
 
 - name: "Add the specified user to the docker group"
-  include_tasks: "02-docker-group.yml"
-  when: docker.user.enabled
+  include_tasks: "02-docker-group/main.yml"
+  when: docker.user is defined
 
 - name: "Ensure Docker is installed"
-  include_tasks: "03-check-docker-installed.yml"
+  include_tasks: "03-check-docker-installed/main.yml"
 
 - name: "Ensure Docker version is correct"
   include_tasks: "04-verify-version/{{ ansible_distribution }}.yml"
