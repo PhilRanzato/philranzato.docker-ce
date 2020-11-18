@@ -52,7 +52,13 @@
     - "docker-compose{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
 
 - name: "Enable the backward compatibility for Cgroups"
-  shell: grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0"
+  lineinfile:
+    path: /etc/default/grub
+    regexp: 'GRUB_CMDLINE_LINUX="rhgb quiet"'
+    line: 'GRUB_CMDLINE_LINUX="rhgb quiet systemd.unified_cgroup_hierarchy=0"'
+    owner: root
+    group: root
+    mode: '0644'
   when: ansible_distribution_version >= '31'
   become: true
 
