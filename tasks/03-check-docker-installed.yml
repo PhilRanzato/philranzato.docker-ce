@@ -1,0 +1,8 @@
+---
+- name: "Gather packages information"
+  package_facts:
+
+- name: "Fail if Docker is not installed"
+  fail:
+    msg: "Something went wrong with the installation, Docker is not installed"
+  when: not ansible_facts.packages['docker-ce'] is defined and not ansible_facts.packages['moby-engine'] is defined
