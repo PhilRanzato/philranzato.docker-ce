@@ -27,6 +27,9 @@
   yum:
     name: "*"
     state: latest
+    exclude:
+    - docker-ce
+    - docker-ce-cli
   become: true
 
 - name: "Install docker components"
