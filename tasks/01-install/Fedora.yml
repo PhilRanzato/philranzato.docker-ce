@@ -32,7 +32,7 @@
   - name: "Install docker components"
     dnf:
       name: "{{ item }}"
-      state: present
+      state: latest
     become: true
     loop:
     - "docker-ce{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
