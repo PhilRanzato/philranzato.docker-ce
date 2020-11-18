@@ -33,6 +33,7 @@
   yum:
     name: "{{ item }}"
     state: present
+    allow_downgrade: yes
   become: true
   loop:
   - "docker-ce{% if docker.version | length > 0 %}-{{ docker.version }}{% endif %}"
