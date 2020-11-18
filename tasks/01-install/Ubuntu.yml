@@ -57,7 +57,7 @@
     state: latest
   become: true
   loop:
-  - "docker-ce{% if docker.version | length > 0 %}-{{ docker.version }}{% endif %}"
-  - "docker-ce-cli{% if docker.version | length > 0 %}-{{ docker.version }}{% endif %}"
+  - "docker-ce{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
+  - "docker-ce-cli{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
   - containerd.io
   notify: "Start docker"

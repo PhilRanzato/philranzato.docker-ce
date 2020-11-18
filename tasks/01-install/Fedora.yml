@@ -35,8 +35,8 @@
       state: present
     become: true
     loop:
-    - "docker-ce{% if docker.version | length > 0 %}-{{ docker.version }}{% endif %}"
-    - "docker-ce-cli{% if docker.version | length > 0 %}-{{ docker.version }}{% endif %}"
+    - "docker-ce{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
+    - "docker-ce-cli{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
     - containerd.io
 
 - name: "Install Docker for Fedora 33"
@@ -48,8 +48,8 @@
       state: present
     become: true
     loop:
-    - "docker{% if docker.version | length > 0 %}-{{ docker.version }}{% endif %}"
-    - "docker-compose{% if docker.version | length > 0 %}-{{ docker.version }}{% endif %}"
+    - "docker{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
+    - "docker-compose{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
 
 - name: "Enable the backward compatibility for Cgroups"
   shell: grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0"
