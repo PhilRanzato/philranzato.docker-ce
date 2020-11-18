@@ -48,7 +48,7 @@
       state: present
     become: true
     loop:
-    - "docker{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
+    - "moby-engine{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
     - "docker-compose{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
 
 - name: "Enable the backward compatibility for Cgroups"
