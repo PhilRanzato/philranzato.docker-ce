@@ -23,13 +23,23 @@
   shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
   become: true
 
+- name: "Update yum"
+  yum:
+    name: "*"
+    state: latest
+    exclude:
+    - docker-ce
+    - docker-ce-cli
+  become: true
+
 - name: "Install docker components"
   yum:
     name: "{{ item }}"
-    state: present
+    state: latest
+    allow_downgrade: yes
   become: true
   loop:
-  - docker-ce
-  - docker-ce-cli
+  - "docker-ce{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
+  - "docker-ce-cli{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
   - containerd.io
   notify: "Start docker"

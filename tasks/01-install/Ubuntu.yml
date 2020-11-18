@@ -45,6 +45,10 @@
   apt:
     name: "*"
     state: latest
+    allow_downgrades: true
+    exclude:
+    - docker-ce
+    - docker-ce-cli
   become: true
 
 - name: "Install Docker components"
@@ -53,7 +57,7 @@
     state: latest
   become: true
   loop:
-  - docker-ce
-  - docker-ce-cli
+  - "docker-ce{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
+  - "docker-ce-cli{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
   - containerd.io
   notify: "Start docker"
