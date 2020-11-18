@@ -47,7 +47,7 @@
     state: latest
   become: true
 
-- name: "Install Docker"
+- name: "Install Docker components"
   apt:
     name: "{{ item }}"
     state: latest

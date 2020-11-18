@@ -4,3 +4,7 @@
 
 - name: "Install Docker-ce"
   include_tasks: "01-install/{{ ansible_distribution }}.yml"
+
+- name: "Add the specified user to the docker group"
+  include_tasks: "02-docker-group.yml"
+  when: docker.user.enabled
