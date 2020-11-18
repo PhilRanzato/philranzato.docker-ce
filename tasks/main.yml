@@ -8,3 +8,6 @@
 - name: "Add the specified user to the docker group"
   include_tasks: "02-docker-group.yml"
   when: docker.user.enabled
+
+- name: "Ensure Docker version is correct"
+  include_tasks: "03-verify.yml"
