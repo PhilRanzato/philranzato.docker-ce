@@ -29,7 +29,7 @@
     state: present
   become: true
   loop:
-  - docker-ce
-  - docker-ce-cli
+  - "docker-ce{% if docker.version | length > 0 %}-{{ docker.version }}{% endif %}"
+  - "docker-ce-cli{% if docker.version | length > 0 %}-{{ docker.version }}{% endif %}"
   - containerd.io
   notify: "Start docker"
