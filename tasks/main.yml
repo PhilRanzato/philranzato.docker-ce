@@ -10,4 +10,4 @@
   when: docker.user.enabled
 
 - name: "Ensure Docker version is correct"
-  include_tasks: "03-verify.yml"
+  include_tasks: "03-verify/{{ ansible_distribution }}.yml"

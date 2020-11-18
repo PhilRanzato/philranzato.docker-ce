@@ -2,7 +2,7 @@
 - name: "Gather packages information"
   package_facts:
 
-- name: "Ensure Docker version is correct"
+- name: "Fail if Docker version is not correct"
   fail:
     msg: "Something went wrong with the installation, Docker version is not {{ docker.version }}"
   when: 

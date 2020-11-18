@@ -1,0 +1,22 @@
+---
+- name: "Gather packages information"
+  package_facts:
+
+- name: "Get docker version - Fedora < 33"
+  when: ansible_distribution_version < '33'
+  block:
+  - name: "Fail if Docker version is not correct"
+    fail:
+      msg: "Something went wrong with the installation, Docker version is not {{ docker.version }}"
+    when: 
+    - docker.version != ansible_facts.packages['docker-ce'][0].version
+    - docker.version != ansible_facts.packages['docker-ce-cli'][0].version
+
+- name: "Get docker version - Fedora == 33"
+  when: ansible_distribution_version == '33'
+  block:
+  - name: "Fail if Docker version is not correct"
+    fail:
+      msg: "Something went wrong with the installation, Docker version is not {{ docker.version }}"
+    when: 
+    - docker.version != ansible_facts.packages['moby-engine'][0].version
