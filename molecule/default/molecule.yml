@@ -9,9 +9,9 @@ platforms:
     pre_build_image: true
     capabilities:
       - SYS_ADMIN
+    privileged: true
     command: /sbin/init
 provisioner:
   name: ansible
 verifier:
   name: ansible
-privileged: true
