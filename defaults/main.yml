@@ -1,6 +1,4 @@
 ---
 docker:
-  user: 
-    enabled: false
-    name: "test"
+  user: "foo"
   version: ""
