@@ -1,10 +1,14 @@
 ---
 sudo: required
 language: python
+os: linux
+dist: bionic
 services:
   - docker
 install:
+  - python3 -m pip install ansible
   - python3 -m pip install molecule
+  - python3 -m pip install molecule-docker
   # - python3 -m pip install required driver (e.g. docker, shade, boto, apache-libcloud)
 script:
-  - molecule test
+  - molecule converge

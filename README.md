@@ -1,6 +1,8 @@
 philranzato.docker-ce
 =========
 
+[![Build Status](https://travis-ci.com/PhilRanzato/philranzato.docker-ce.svg?token=ZNaPXzqK9QuDLLygA1WH&branch=feature-GH19-TravisCI)](https://travis-ci.com/PhilRanzato/philranzato.docker-ce)
+
 Install and manage Docker CE on multiple OS.
 
 Requirements

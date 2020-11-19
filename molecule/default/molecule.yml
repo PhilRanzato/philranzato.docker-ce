@@ -7,6 +7,9 @@ platforms:
   - name: docker-ce-role
     image: docker.io/pycontribs/centos:7
     pre_build_image: true
+    capabilities:
+      - SYS_ADMIN
+    command: /sbin/init
 provisioner:
   name: ansible
 verifier:
