@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    docker:
+      version: 19.03.13
+  tasks:
+    - name: "Include philranzato.docker-ce/"
+      include_role:
+        name: "philranzato.docker-ce/"
+
