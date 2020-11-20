@@ -1,7 +1,7 @@
 philranzato.docker-ce
 =========
 
-[![Build Status](https://travis-ci.com/PhilRanzato/philranzato.docker-ce.svg?token=ZNaPXzqK9QuDLLygA1WH&branch=feature-GH19-TravisCI)](https://travis-ci.com/PhilRanzato/philranzato.docker-ce)
+[![Build Status](https://travis-ci.com/PhilRanzato/philranzato.docker-ce.svg?token=ZNaPXzqK9QuDLLygA1WH&branch=master)](https://travis-ci.com/PhilRanzato/philranzato.docker-ce)
 ![Molecule Test](https://github.com/PhilRanzato/philranzato.docker-ce/workflows/Molecule%20Test/badge.svg)
 
 Install and manage Docker CE on multiple OS.
