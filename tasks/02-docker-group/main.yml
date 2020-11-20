@@ -1,7 +1,7 @@
 ---
-- name: "Adding {{ docker.user.name }} to the docker group"
+- name: "Adding {{ docker.user }} to the docker group"
   user:
-    name: "{{ docker.user.name }}"
+    name: "{{ docker.user }}"
     groups:
     - "docker"
     append: yes
