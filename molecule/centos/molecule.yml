@@ -4,7 +4,7 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: docker-ce-role
+  - name: docker-ce-role-centos
     image: docker.io/pycontribs/centos:7
     pre_build_image: true
     capabilities:
@@ -13,5 +13,9 @@ platforms:
     command: /sbin/init
 provisioner:
   name: ansible
+  lint:
+    name: ansible-lint
+scenario:
+  name: centos
 verifier:
   name: ansible

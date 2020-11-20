@@ -2,9 +2,17 @@
 - name: "Gather packages information"
   package_facts:
 
+- debug:
+    msg: "{{ item }}"
+  loop:
+  - "{{ docker_ce_package_version_ubuntu }}"
+  - "{{ ansible_facts.packages['docker-ce'][0].version }}"
+  - "{{ docker_ce_cli_package_version_ubuntu }}"
+  - "{{ ansible_facts.packages['docker-ce-cli'][0].version }}"
+
 - name: "Fail if Docker version is not correct"
   fail:
     msg: "Something went wrong with the installation, Docker version is not {{ docker.version }}"
   when: 
-  - docker.version != ansible_facts.packages['docker-ce'][0].version
-  - docker.version != ansible_facts.packages['docker-ce-cli'][0].version
+  - docker_ce_package_version_ubuntu | replace('docker-ce=', '') != ansible_facts.packages['docker-ce'][0].version
+  - docker_ce_cli_package_version_ubuntu | replace('docker-ce-cli=', '') != ansible_facts.packages['docker-ce-cli'][0].version

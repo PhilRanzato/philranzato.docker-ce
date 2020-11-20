@@ -4,14 +4,15 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: docker-ce-role
+  - name: docker-ce-role-ubuntu
     image: docker.io/pycontribs/ubuntu:latest
     pre_build_image: true
     capabilities:
       - SYS_ADMIN
     privileged: true
-    command: /sbin/init
 provisioner:
   name: ansible
+  env: 
+    MOLECULE_NO_LOG: false
 verifier:
   name: ansible

@@ -1,5 +1,5 @@
 ---
-name: Molecule Test
+name: Molecule Test Centos
 
 on: 
 - push
@@ -49,20 +49,6 @@ jobs:
       - name: Test with molecule on Centos 7
         run: |
           molecule converge -s centos
-        env:
-          PY_COLORS: '1'
-          ANSIBLE_FORCE_COLOR: '1'
-
-      - name: Test with molecule on Ubuntu
-        run: |
-          molecule converge -s ubuntu
-        env:
-          PY_COLORS: '1'
-          ANSIBLE_FORCE_COLOR: '1'
-
-      - name: Test with molecule on Fedora
-        run: |
-          molecule converge -s fedora
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'

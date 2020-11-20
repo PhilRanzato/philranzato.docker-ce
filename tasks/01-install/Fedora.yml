@@ -60,6 +60,7 @@
     group: root
     mode: '0644'
   when: ansible_distribution_version >= '31'
+  ignore_errors: true
   become: true
 
 - name: "Reboot to take changes"

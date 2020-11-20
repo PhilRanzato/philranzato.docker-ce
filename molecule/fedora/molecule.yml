@@ -4,7 +4,7 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: docker-ce-role
+  - name: docker-ce-role-fedora
     image: docker.io/pycontribs/fedora:latest
     pre_build_image: true
     capabilities:
