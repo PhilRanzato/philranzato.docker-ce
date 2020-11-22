@@ -73,7 +73,7 @@
     reboot:
     become: true
 
-- name: "Wait for host to be ready"
-  wait_for:
-    port: 22
-  notify: "Start docker"
+  - name: "Wait for host to be ready"
+    wait_for:
+      port: 22
+    notify: "Start docker"
