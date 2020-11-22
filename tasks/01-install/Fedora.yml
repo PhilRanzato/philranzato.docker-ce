@@ -51,21 +51,27 @@
     - "moby-engine{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
     - "docker-compose{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
 
-- name: "Enable the backward compatibility for Cgroups"
-  lineinfile:
+- name: "Check if grub file exists"
+  stat:
     path: /etc/default/grub
-    regexp: 'GRUB_CMDLINE_LINUX="rhgb quiet"'
-    line: 'GRUB_CMDLINE_LINUX="rhgb quiet systemd.unified_cgroup_hierarchy=0"'
-    owner: root
-    group: root
-    mode: '0644'
-  when: ansible_distribution_version >= '31'
-  ignore_errors: true
-  become: true
+  register: grub
 
-- name: "Reboot to take changes"
-  reboot:
-  become: true
+- name: "Enable the backward compatibility for Cgroups"
+  when: grub.stat.exists and ansible_distribution_version >= '31'
+  block:
+  - name: "Enable the backward compatibility for Cgroups"
+    lineinfile:
+      path: /etc/default/grub
+      regexp: 'GRUB_CMDLINE_LINUX="rhgb quiet"'
+      line: 'GRUB_CMDLINE_LINUX="rhgb quiet systemd.unified_cgroup_hierarchy=0"'
+      owner: root
+      group: root
+      mode: '0644'
+    become: true
+
+  - name: "Reboot to take changes"
+    reboot:
+    become: true
 
 - name: "Wait for host to be ready"
   wait_for:
