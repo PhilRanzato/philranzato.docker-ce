@@ -61,4 +61,15 @@
   - "{{ docker_ce_package_version_ubuntu }}"
   - "{{ docker_ce_cli_package_version_ubuntu }}"
   - containerd.io
+
+- name: "Start docker with systemd"
+  debug:
+    msg: "Systemd is present"
   notify: "Start docker"
+  when: ansible_service_mgr == 'systemd'
+
+- name: "Start docker as service"
+  debug:
+    msg: "Systemd is present"
+  notify: "Start docker service"
+  when: ansible_service_mgr != 'systemd'
