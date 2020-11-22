@@ -1,0 +1,17 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: docker-ce-role-fedora
+    image: docker.io/pycontribs/fedora:latest
+    pre_build_image: true
+    capabilities:
+      - SYS_ADMIN
+    privileged: true
+    command: /sbin/init
+provisioner:
+  name: ansible
+verifier:
+  name: ansible

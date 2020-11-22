@@ -1,0 +1,18 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: docker-ce-role-ubuntu
+    image: docker.io/pycontribs/ubuntu:latest
+    pre_build_image: true
+    capabilities:
+      - SYS_ADMIN
+    privileged: true
+provisioner:
+  name: ansible
+  env: 
+    MOLECULE_NO_LOG: false
+verifier:
+  name: ansible

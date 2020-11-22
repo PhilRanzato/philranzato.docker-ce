@@ -1,5 +1,5 @@
 ---
-name: Molecule Test
+name: Molecule Test Centos
 
 on: 
 - push
@@ -46,9 +46,9 @@ jobs:
         with:
           credentials: ${{secrets.GIT_CREDENTIALS}}
 
-      - name: Test with molecule
+      - name: Test with molecule on Centos 7
         run: |
-          molecule converge
+          molecule converge -s centos
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'

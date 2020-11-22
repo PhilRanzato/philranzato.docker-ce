@@ -13,8 +13,7 @@
 
 - name: "Update Apt"
   apt:
-    name: "*"
-    state: latest
+    update_cache: yes
   become: true
 
 - name: "Install dependencies"
@@ -43,21 +42,34 @@
 
 - name: "Update Apt"
   apt:
-    name: "*"
-    state: latest
-    allow_downgrades: true
-    exclude:
-    - docker-ce
-    - docker-ce-cli
+    update_cache: yes
   become: true
+
+- name: "Build the version name"
+  set_fact:
+    docker_ce_package_version_ubuntu: "docker-ce{% if docker.version is defined %}=5:{{ docker.version }}~3-0~ubuntu-{{ ansible_distribution_release }}{% endif %}"
+    docker_ce_cli_package_version_ubuntu: "docker-ce-cli{% if docker.version is defined %}=5:{{ docker.version }}~3-0~ubuntu-{{ ansible_distribution_release }}{% endif %}"
 
 - name: "Install Docker components"
   apt:
     name: "{{ item }}"
-    state: latest
+    state: present
+    # allow downgrades
+    force: true
   become: true
   loop:
-  - "docker-ce{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
-  - "docker-ce-cli{% if docker.version is defined %}-{{ docker.version }}{% endif %}"
+  - "{{ docker_ce_package_version_ubuntu }}"
+  - "{{ docker_ce_cli_package_version_ubuntu }}"
   - containerd.io
+
+- name: "Start docker with systemd"
+  debug:
+    msg: "Systemd is present"
   notify: "Start docker"
+  when: ansible_service_mgr == 'systemd'
+
+- name: "Start docker as service"
+  debug:
+    msg: "Systemd is present"
+  notify: "Start docker service"
+  when: ansible_service_mgr != 'systemd'
