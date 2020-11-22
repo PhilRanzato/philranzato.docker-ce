@@ -2,7 +2,9 @@ philranzato.docker-ce
 =========
 
 [![Build Status](https://travis-ci.com/PhilRanzato/philranzato.docker-ce.svg?token=ZNaPXzqK9QuDLLygA1WH&branch=master)](https://travis-ci.com/PhilRanzato/philranzato.docker-ce)
-![Molecule Test](https://github.com/PhilRanzato/philranzato.docker-ce/workflows/Molecule%20Test/badge.svg)
+![Molecule Test Centos](https://github.com/PhilRanzato/philranzato.docker-ce/workflows/Molecule%20Test%20Centos/badge.svg)
+![Molecule Test Ubuntu](https://github.com/PhilRanzato/philranzato.docker-ce/workflows/Molecule%20Test%20Ubuntu/badge.svg)
+![Molecule Test Fedora](https://github.com/PhilRanzato/philranzato.docker-ce/workflows/Molecule%20Test%20Fedora/badge.svg)
 
 Install and manage Docker CE on multiple OS.
 
