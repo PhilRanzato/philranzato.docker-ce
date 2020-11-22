@@ -48,7 +48,7 @@ jobs:
 
       - name: Test with molecule on Centos 7
         run: |
-          molecule converge -s centos
+          molecule test -s centos
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'

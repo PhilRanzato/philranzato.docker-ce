@@ -48,7 +48,7 @@ jobs:
 
       - name: Test with molecule on Ubuntu
         run: |
-          molecule converge -s ubuntu
+          molecule test -s ubuntu
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'

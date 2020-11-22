@@ -22,5 +22,5 @@ galaxy_info:
     - focal
     - xenial
   galaxy_tags:
-  - docker-ce
+  - docker
 dependencies: []

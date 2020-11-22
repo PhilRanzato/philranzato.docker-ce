@@ -19,3 +19,7 @@ scenario:
   name: centos
 verifier:
   name: ansible
+lint: |
+  set -e
+  ansible-lint
+  flake8

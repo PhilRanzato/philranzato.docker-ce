@@ -16,3 +16,7 @@ provisioner:
     MOLECULE_NO_LOG: false
 verifier:
   name: ansible
+lint: |
+  set -e
+  ansible-lint
+  flake8

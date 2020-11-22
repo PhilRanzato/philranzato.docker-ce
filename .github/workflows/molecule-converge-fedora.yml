@@ -48,7 +48,7 @@ jobs:
 
       - name: Test with molecule on Fedora
         run: |
-          molecule converge -s fedora
+          molecule test -s fedora
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
