@@ -9,4 +9,3 @@
     - name: "Include philranzato.docker-ce/"
       include_role:
         name: "philranzato.docker-ce/"
-

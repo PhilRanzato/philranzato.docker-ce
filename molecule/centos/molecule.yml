@@ -17,5 +17,22 @@ provisioner:
     name: ansible-lint
 scenario:
   name: centos
+  test_sequence:
+    - lint
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    # Skip this to use yum-config-manager
+    # - idempotence
+    - side_effect
+    - verify
+    - destroy
 verifier:
   name: ansible
+lint: |
+  set -e
+  ansible-lint
+  flake8

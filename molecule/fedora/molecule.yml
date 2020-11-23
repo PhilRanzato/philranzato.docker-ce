@@ -13,5 +13,24 @@ platforms:
     command: /sbin/init
 provisioner:
   name: ansible
+scenario:
+  name: fedora
+  test_sequence:
+    - lint
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    # Skip this to use dnf config-manager
+    # - idempotence
+    - side_effect
+    - verify
+    - destroy
 verifier:
   name: ansible
+lint: |
+  set -e
+  ansible-lint
+  flake8
